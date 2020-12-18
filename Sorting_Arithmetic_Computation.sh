@@ -5,10 +5,10 @@ read -p "Enter First Input :- " a
 read -p "Enter Second Input :- " b
 read -p "Enter Third Input :- " c
 
-echo "---------------- INPUTS ----------------------"
-echo "First Input Number is :- $a"
-echo "Second Input Number is :- $b"
-echo "Third Input Number is :- $c"
+#echo "---------------- INPUTS ----------------------"
+#echo "First Input Number is :- $a"
+#echo "Second Input Number is :- $b"
+#echo "Third Input Number is :- $c"
 
 echo "*********** 1] Compute a + b * c ****************"
 sum1=$(( $a+$b*$c ))
@@ -35,11 +35,31 @@ CompResult[4]="$sum4"
 
 echo ${CompResult[@]}
 
-#-------------Print the Dictionary in array---------------------------------------
+#-------------Store the Dictionary in array---------------------------------------
 for i in ${!CompResult[@]}
 do
-	echo $i] "Computation $i Result is :-" ${CompResult[$i]}
+	array[$i]=${CompResult[$i]}
 done
 
+#--------------Print the array -------------------------------------
+for i in ${!array[@]}
+do
+	echo $i] Computation $i Result is:- ${array[$i]}
+done
 
+#------------------Sort the Result Of Computation in Descending order-----------------------------------------
 
+for (( i = 1; i<=4; i++ ))
+do
+	for (( j = 1; j<=4; j++ ))
+	do
+		if [ ${array[$j]} -lt ${array[$i]} ]
+		then
+			temp=${array[$i]}
+			array[$i]=${array[$j]}
+			array[$j]=$temp
+		fi
+	done
+done
+echo "------------------Sort the Result Of Computation in Descending order---------------------------------"
+echo ${array[@]}
