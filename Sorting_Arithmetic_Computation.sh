@@ -63,3 +63,21 @@ do
 done
 echo "------------------Sort the Result Of Computation in Descending order---------------------------------"
 echo ${array[@]}
+
+
+#------------------Sort the Result Of Computation in Ascending order-----------------------------------------
+
+for (( i = 1; i<=4; i++ ))
+do
+        for (( j = 1; j<=4; j++ ))
+        do
+                if [ ${array[$j]} -gt ${array[$i]} ]
+                then
+                        temp=${array[$i]}
+                        array[$i]=${array[$j]}
+                        array[$j]=$temp
+                fi
+        done
+done
+echo "------------------Sort the Result Of Computation in Ascending order---------------------------------"
+echo ${array[@]}
