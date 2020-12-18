@@ -33,3 +33,13 @@ CompResult[2]="$sum2"
 CompResult[3]="$sum3"
 CompResult[4]="$sum4"
 
+echo ${CompResult[@]}
+
+#-------------Print the Dictionary in array---------------------------------------
+for i in ${!CompResult[@]}
+do
+	echo $i] "Computation $i Result is :-" ${CompResult[$i]}
+done
+
+
+
